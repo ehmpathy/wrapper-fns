@@ -16,6 +16,26 @@ npm install wrapper-fns
 
 # use
 
+### `withWrappers`
+
+applies wrappers chosen in a list, to avoid nested indentations
+
+```ts
+const wrapped = withWrappers(doGreatThing, [
+  setWrapper({
+    wrapper: withLogTrail,
+    options: { name: 'doGreatThing' },
+  }),
+  setWrapper({
+    wrapper: withTimeout,
+    options: { threshold: 100 },
+  }),
+]);
+```
+
+*note, we use `setWrapper` to allow typescript to enforce the relationship between `options` and the `wrapper`*
+
+
 ### `withRetry`
 
 retries the wrapped logic execution in case of failure
