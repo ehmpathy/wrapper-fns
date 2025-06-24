@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/ehmpathy/wrapper-fns/compare/v1.0.1...v1.1.0) (2025-06-24)
+
+
+### Features
+
+* **wrap:** add withWrappers to eliminate nested indentation ([30b6dab](https://github.com/ehmpathy/wrapper-fns/commit/30b6dab47352bce6ef1498dc371f6631be31b054))
+
 ## [1.0.1](https://github.com/ehmpathy/wrapper-fns/compare/v1.0.0...v1.0.1) (2025-06-24)
 
 
