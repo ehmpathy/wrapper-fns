@@ -1,4 +1,4 @@
-import { Procedure } from 'domain-glossary-procedure';
+import type { Procedure } from 'domain-glossary-procedure';
 
 export type Wrapper<TProcedure extends Procedure, TOptions> = (
   logic: TProcedure,

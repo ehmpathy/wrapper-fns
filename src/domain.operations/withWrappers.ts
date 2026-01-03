@@ -1,6 +1,6 @@
-import { Procedure } from 'domain-glossary-procedure';
+import type { Procedure } from 'domain-glossary-procedure';
 
-import { WrapperChoice } from '../domain/objects/Wrapper';
+import type { WrapperChoice } from '@src/domain.objects/Wrapper';
 
 /**
  * .what = a helper procedure to ensure that the choice.options matches the wrapper.options

@@ -9,5 +9,8 @@
   },
   "cSpell.words": [
     "datetime"
-  ]
+  ],
+  "terraform.languageServer.enable": false,
+  "yaml.validate": false,
+  "cSpell.enabled": true
 }

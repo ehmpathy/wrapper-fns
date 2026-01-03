@@ -1,7 +1,8 @@
 import { given, then } from 'test-fns';
-import { Procedure } from 'visualogic';
+import type { Procedure } from 'visualogic';
 
-import { Wrapper } from '../domain/objects/Wrapper';
+import type { Wrapper } from '@src/domain.objects/Wrapper';
+
 import { setWrapper, withWrappers } from './withWrappers';
 
 describe('withWrappers', () => {

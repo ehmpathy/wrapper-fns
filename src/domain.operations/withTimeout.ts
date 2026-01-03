@@ -1,5 +1,5 @@
-import { toMilliseconds, UniDuration } from '@ehmpathy/uni-time';
-import {
+import { toMilliseconds, type UniDuration } from '@ehmpathy/uni-time';
+import type {
   Procedure,
   ProcedureContext,
   ProcedureInput,
