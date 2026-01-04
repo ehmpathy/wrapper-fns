@@ -1,5 +1,5 @@
+import type { Procedure } from 'as-procedure';
 import { given, then } from 'test-fns';
-import type { Procedure } from 'visualogic';
 
 import type { Wrapper } from '@src/domain.objects/Wrapper';
 
