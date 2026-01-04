@@ -1,4 +1,4 @@
-import type { Procedure } from 'domain-glossary-procedure';
+import type { Procedure } from 'as-procedure';
 
 import type { WrapperChoice } from '@src/domain.objects/Wrapper';
 

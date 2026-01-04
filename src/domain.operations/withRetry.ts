@@ -3,23 +3,23 @@ import type {
   ProcedureContext,
   ProcedureInput,
   ProcedureOutput,
-  VisualogicContext,
-} from 'visualogic';
+} from 'as-procedure';
+import type { ContextLogTrail } from 'simple-log-methods';
 
-export function withRetry<TInput, TContext extends VisualogicContext, TOutput>(
-  logic: () => TOutput, // empty inputs override
+export function withRetry<TOutput>(logic: () => TOutput): typeof logic;
+export function withRetry<TInput, TOutput>(
+  logic: (input: TInput) => TOutput,
 ): typeof logic;
-export function withRetry<TInput, TContext extends VisualogicContext, TOutput>(
-  logic: (input: TInput) => TOutput, // empty inputs override
-): typeof logic;
-export function withRetry<TInput, TContext extends VisualogicContext, TOutput>(
+export function withRetry<TInput, TContext extends ContextLogTrail, TOutput>(
   logic: Procedure<TInput, TContext, TOutput>,
 ): typeof logic;
 
 /**
- * function which calls the wrapped function and runs it again one time if an error is caught
+ * .what = wraps a procedure to retry once on error
+ * .why = provides resilience against transient failures
+ * .note = logs retry attempts if context.log is available, otherwise retries silently
  */
-export function withRetry<TInput, TContext extends VisualogicContext, TOutput>(
+export function withRetry<TInput, TContext, TOutput>(
   logic: Procedure<TInput, TContext, TOutput>,
 ): typeof logic {
   return (async (
@@ -30,12 +30,19 @@ export function withRetry<TInput, TContext extends VisualogicContext, TOutput>(
       return await logic(input, context);
     } catch (error) {
       if (!(error instanceof Error)) throw error;
-      context.log.warn('withRetry.progress: caught an error, will retry', {
-        error: {
-          message: error.message,
-          stack: error.stack,
-        },
-      });
+
+      // log retry attempt if context.log is available
+      const log = (context as { log?: { warn?: (...args: unknown[]) => void } })
+        ?.log;
+      if (log?.warn) {
+        log.warn('withRetry.progress: caught an error, will retry', {
+          error: {
+            message: error.message,
+            stack: error.stack,
+          },
+        });
+      }
+
       return await logic(input, context);
     }
   }) as typeof logic;

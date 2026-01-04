@@ -4,7 +4,7 @@ import type {
   ProcedureContext,
   ProcedureInput,
   ProcedureOutput,
-} from 'visualogic';
+} from 'as-procedure';
 
 export function withTimeout<TInput, TContext, TOutput>(
   logic: () => TOutput, // empty inputs override
