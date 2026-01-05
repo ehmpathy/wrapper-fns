@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@ehmpathy/uni-time':
-        specifier: 1.7.4
-        version: 1.7.4
+        specifier: 1.9.4
+        version: 1.9.4(@types/node@22.15.21)(zod@3.25.76)
       as-procedure:
         specifier: 1.1.10
         version: 1.1.10(@types/node@22.15.21)(zod@3.25.76)
@@ -28,7 +28,7 @@ importers:
         version: 1.5.3
       simple-log-methods:
         specifier: 0.6.5
-        version: 0.6.5
+        version: 0.6.5(@types/node@22.15.21)(zod@3.25.76)
     devDependencies:
       '@biomejs/biome':
         specifier: 2.3.8
@@ -65,13 +65,13 @@ importers:
         version: 0.13.11(@types/node@22.15.21)(zod@3.25.76)
       declapract-typescript-ehmpathy:
         specifier: 0.47.8
-        version: 0.47.8(declapract@0.13.11(@types/node@22.15.21)(zod@3.25.76))(esbuild@0.25.12)
+        version: 0.47.8(@types/node@22.15.21)(declapract@0.13.11(@types/node@22.15.21)(zod@3.25.76))(esbuild@0.25.12)(zod@3.25.76)
       declastruct:
         specifier: 1.7.3
-        version: 1.7.3(domain-objects@0.31.7)
+        version: 1.7.3(@types/node@22.15.21)(domain-objects@0.31.7(@types/node@22.15.21)(zod@3.25.76))(zod@3.25.76)
       declastruct-github:
         specifier: 1.3.0
-        version: 1.3.0
+        version: 1.3.0(@types/node@22.15.21)(zod@3.25.76)
       depcheck:
         specifier: 1.4.3
         version: 1.4.3
@@ -650,6 +650,10 @@ packages:
 
   '@ehmpathy/uni-time@1.9.0':
     resolution: {integrity: sha512-4btv6Iib/TniQnr941N6oPXod7trrZVvAOH0oNEJa60/Ey+/ESXNeu/X7fdh6vQSJhlSvjzVoMi6IPfbbyrxPw==}
+    engines: {node: '>=8.0.0'}
+
+  '@ehmpathy/uni-time@1.9.4':
+    resolution: {integrity: sha512-wan1BElSVPyn3Y/w0X4sfFnnIMVz4/GOF5Y0+FidEcOchqOXwBoDoBDfdbVoljrLiePUSHBmusbBPdooXudn+g==}
     engines: {node: '>=8.0.0'}
 
   '@emnapi/core@1.8.0':
@@ -4928,6 +4932,20 @@ snapshots:
       test-fns: 1.5.0
       type-fns: 1.19.0
 
+  '@ehmpathy/uni-time@1.9.4(@types/node@22.15.21)(zod@3.25.76)':
+    dependencies:
+      date-fns: 3.6.0
+      domain-glossaries: 1.0.0
+      domain-objects: 0.31.7(@types/node@22.15.21)(zod@3.25.76)
+      helpful-errors: 1.5.3
+      test-fns: 1.5.0
+      type-fns: 1.21.0
+    transitivePeerDependencies:
+      - '@types/node'
+      - aws-crt
+      - ws
+      - zod
+
   '@emnapi/core@1.8.0':
     dependencies:
       '@emnapi/wasi-threads': 1.1.0
@@ -6286,10 +6304,10 @@ snapshots:
       domain-glossary-procedure: 1.0.0
       domain-objects: 0.31.3
       helpful-errors: 1.5.3
-      rhachet: 1.13.1(zod@3.25.76)
+      rhachet: 1.13.1(@types/node@22.15.21)(zod@3.25.76)
       rhachet-roles-ehmpathy: 1.13.3(@types/node@22.15.21)(zod@3.25.76)
       serde-fns: 1.0.0
-      simple-log-methods: 0.6.3
+      simple-log-methods: 0.6.3(@types/node@22.15.21)(zod@3.25.76)
       test-fns: 1.4.2
       type-fns: 1.21.0
     transitivePeerDependencies:
@@ -6298,23 +6316,33 @@ snapshots:
       - ws
       - zod
 
-  as-procedure@1.1.6:
+  as-procedure@1.1.6(@types/node@22.15.21)(zod@3.25.76):
     dependencies:
       '@ehmpathy/error-fns': 1.3.2
       domain-glossary-procedure: 1.0.0
       serde-fns: 1.0.0
-      simple-log-methods: 0.6.1
+      simple-log-methods: 0.6.1(@types/node@22.15.21)(zod@3.25.76)
       test-fns: 1.4.2
       type-fns: 1.17.0
+    transitivePeerDependencies:
+      - '@types/node'
+      - aws-crt
+      - ws
+      - zod
 
-  as-procedure@1.1.7:
+  as-procedure@1.1.7(@types/node@22.15.21)(zod@3.25.76):
     dependencies:
       '@ehmpathy/error-fns': 1.3.2
       domain-glossary-procedure: 1.0.0
       serde-fns: 1.0.0
-      simple-log-methods: 0.6.1
+      simple-log-methods: 0.6.1(@types/node@22.15.21)(zod@3.25.76)
       test-fns: 1.4.2
       type-fns: 1.17.0
+    transitivePeerDependencies:
+      - '@types/node'
+      - aws-crt
+      - ws
+      - zod
 
   at-least-node@1.0.0: {}
 
@@ -6662,7 +6690,7 @@ snapshots:
     dependencies:
       ms: 2.1.3
 
-  declapract-typescript-ehmpathy@0.47.8(declapract@0.13.11(@types/node@22.15.21)(zod@3.25.76))(esbuild@0.25.12):
+  declapract-typescript-ehmpathy@0.47.8(@types/node@22.15.21)(declapract@0.13.11(@types/node@22.15.21)(zod@3.25.76))(esbuild@0.25.12)(zod@3.25.76):
     dependencies:
       declapract: 0.13.11(@types/node@22.15.21)(zod@3.25.76)
       domain-objects: 0.31.7(@types/node@22.15.21)(zod@3.25.76)
@@ -6672,9 +6700,12 @@ snapshots:
       helpful-errors: 1.5.3
       yaml: 2.8.2
     transitivePeerDependencies:
+      - '@types/node'
+      - aws-crt
       - esbuild
       - supports-color
       - ws
+      - zod
 
   declapract@0.13.11(@types/node@22.15.21)(zod@3.25.76):
     dependencies:
@@ -6704,7 +6735,7 @@ snapshots:
       - ws
       - zod
 
-  declastruct-github@1.3.0:
+  declastruct-github@1.3.0(@types/node@22.15.21)(zod@3.25.76):
     dependencies:
       '@ehmpathy/uni-time': 1.7.4
       '@octokit/rest': 21.1.1
@@ -6712,15 +6743,17 @@ snapshots:
       domain-objects: 0.31.7(@types/node@22.15.21)(zod@3.25.76)
       helpful-errors: 1.5.3
       libsodium-wrappers: 0.7.16
-      simple-in-memory-cache: 0.4.0
+      simple-in-memory-cache: 0.4.0(@types/node@22.15.21)(zod@3.25.76)
       type-fns: 1.21.0
       visualogic: 1.3.2
-      with-simple-cache: 0.15.1
+      with-simple-cache: 0.15.1(@types/node@22.15.21)(zod@3.25.76)
     transitivePeerDependencies:
+      - '@types/node'
       - aws-crt
       - ws
+      - zod
 
-  declastruct@1.7.3(domain-objects@0.31.7):
+  declastruct@1.7.3(@types/node@22.15.21)(domain-objects@0.31.7(@types/node@22.15.21)(zod@3.25.76))(zod@3.25.76):
     dependencies:
       bottleneck: 2.19.5
       chalk: 5.4.1
@@ -6728,11 +6761,16 @@ snapshots:
       domain-objects: 0.31.7(@types/node@22.15.21)(zod@3.25.76)
       helpful-errors: 1.5.3
       jest-diff: 30.0.2
-      rhachet-artifact-git: 1.1.3
-      simple-log-methods: 0.6.2
+      rhachet-artifact-git: 1.1.3(@types/node@22.15.21)(zod@3.25.76)
+      simple-log-methods: 0.6.2(@types/node@22.15.21)(zod@3.25.76)
       tsx: 4.20.6
       type-fns: 1.21.0
       uuid-fns: 1.0.2
+    transitivePeerDependencies:
+      - '@types/node'
+      - aws-crt
+      - ws
+      - zod
 
   dedent@0.7.0: {}
 
@@ -8121,56 +8159,76 @@ snapshots:
 
   reusify@1.1.0: {}
 
-  rhachet-artifact-git@1.1.0:
+  rhachet-artifact-git@1.1.0(@types/node@22.15.21)(zod@3.25.76):
     dependencies:
       '@ehmpathy/uni-time': 1.8.1
-      as-procedure: 1.1.7
+      as-procedure: 1.1.7(@types/node@22.15.21)(zod@3.25.76)
       domain-objects: 0.25.2
       find-up: 5.0.0
       hash-fns: 1.1.0
       helpful-errors: 1.3.8
-      rhachet-artifact: 1.0.0
+      rhachet-artifact: 1.0.0(@types/node@22.15.21)(zod@3.25.76)
       serde-fns: 1.3.0
       type-fns: 1.19.0
+    transitivePeerDependencies:
+      - '@types/node'
+      - aws-crt
+      - ws
+      - zod
 
-  rhachet-artifact-git@1.1.3:
+  rhachet-artifact-git@1.1.3(@types/node@22.15.21)(zod@3.25.76):
     dependencies:
       '@ehmpathy/uni-time': 1.8.1
-      as-procedure: 1.1.7
+      as-procedure: 1.1.7(@types/node@22.15.21)(zod@3.25.76)
       domain-objects: 0.31.3
       find-up: 5.0.0
       hash-fns: 1.1.0
       helpful-errors: 1.5.3
-      rhachet-artifact: 1.0.1
+      rhachet-artifact: 1.0.1(@types/node@22.15.21)(zod@3.25.76)
       serde-fns: 1.3.0
       type-fns: 1.21.0
+    transitivePeerDependencies:
+      - '@types/node'
+      - aws-crt
+      - ws
+      - zod
 
-  rhachet-artifact@1.0.0:
+  rhachet-artifact@1.0.0(@types/node@22.15.21)(zod@3.25.76):
     dependencies:
-      as-procedure: 1.1.7
+      as-procedure: 1.1.7(@types/node@22.15.21)(zod@3.25.76)
       domain-objects: 0.25.2
+    transitivePeerDependencies:
+      - '@types/node'
+      - aws-crt
+      - ws
+      - zod
 
-  rhachet-artifact@1.0.1:
+  rhachet-artifact@1.0.1(@types/node@22.15.21)(zod@3.25.76):
     dependencies:
-      as-procedure: 1.1.7
+      as-procedure: 1.1.7(@types/node@22.15.21)(zod@3.25.76)
       domain-objects: 0.31.3
       helpful-errors: 1.5.3
+    transitivePeerDependencies:
+      - '@types/node'
+      - aws-crt
+      - ws
+      - zod
 
   rhachet-roles-bhrain@0.3.0(@types/node@22.15.21)(zod@3.25.76):
     dependencies:
       '@ehmpathy/as-command': 1.0.3
       '@ehmpathy/uni-time': 1.8.1
-      as-procedure: 1.1.7
+      as-procedure: 1.1.7(@types/node@22.15.21)(zod@3.25.76)
       domain-objects: 0.31.7(@types/node@22.15.21)(zod@3.25.76)
       fast-glob: 3.3.3
       helpful-errors: 1.5.3
       inquirer: 12.7.0(@types/node@22.15.21)
       openai: 5.8.2(zod@3.25.76)
-      rhachet-artifact: 1.0.0
-      rhachet-artifact-git: 1.1.0
-      rhachet-roles-bhuild: 0.1.3(zod@3.25.76)
+      rhachet-artifact: 1.0.0(@types/node@22.15.21)(zod@3.25.76)
+      rhachet-artifact-git: 1.1.0(@types/node@22.15.21)(zod@3.25.76)
+      rhachet-roles-bhuild: 0.1.3(@types/node@22.15.21)(zod@3.25.76)
       serde-fns: 1.2.0
-      simple-in-memory-cache: 0.4.0
+      simple-in-memory-cache: 0.4.0(@types/node@22.15.21)(zod@3.25.76)
       type-fns: 1.21.0
       with-simple-caching: 0.14.2
       wrapper-fns: 1.1.0
@@ -8185,17 +8243,17 @@ snapshots:
       '@anthropic-ai/sdk': 0.51.0
       '@ehmpathy/as-command': 1.0.3
       '@ehmpathy/uni-time': 1.8.1
-      as-procedure: 1.1.7
+      as-procedure: 1.1.7(@types/node@22.15.21)(zod@3.25.76)
       domain-objects: 0.31.7(@types/node@22.15.21)(zod@3.25.76)
       fast-glob: 3.3.3
       helpful-errors: 1.5.3
       inquirer: 12.7.0(@types/node@22.15.21)
       openai: 5.8.2(zod@3.25.76)
-      rhachet-artifact: 1.0.0
-      rhachet-artifact-git: 1.1.0
-      rhachet-roles-bhuild: 0.1.3(zod@3.25.76)
+      rhachet-artifact: 1.0.0(@types/node@22.15.21)(zod@3.25.76)
+      rhachet-artifact-git: 1.1.0(@types/node@22.15.21)(zod@3.25.76)
+      rhachet-roles-bhuild: 0.1.3(@types/node@22.15.21)(zod@3.25.76)
       serde-fns: 1.2.0
-      simple-in-memory-cache: 0.4.0
+      simple-in-memory-cache: 0.4.0(@types/node@22.15.21)(zod@3.25.76)
       type-fns: 1.21.0
       with-simple-caching: 0.14.2
       wrapper-fns: 1.1.0
@@ -8206,12 +8264,14 @@ snapshots:
       - aws-crt
       - ws
 
-  rhachet-roles-bhuild@0.1.3(zod@3.25.76):
+  rhachet-roles-bhuild@0.1.3(@types/node@22.15.21)(zod@3.25.76):
     dependencies:
       domain-objects: 0.31.7(@types/node@22.15.21)(zod@3.25.76)
       helpful-errors: 1.5.3
-      rhachet: 1.15.2(zod@3.25.76)
+      rhachet: 1.15.2(@types/node@22.15.21)(zod@3.25.76)
     transitivePeerDependencies:
+      - '@types/node'
+      - aws-crt
       - ws
       - zod
 
@@ -8219,7 +8279,7 @@ snapshots:
     dependencies:
       domain-objects: 0.31.7(@types/node@22.15.21)(zod@3.25.76)
       helpful-errors: 1.5.3
-      rhachet: 1.15.2(zod@3.25.76)
+      rhachet: 1.15.2(@types/node@22.15.21)(zod@3.25.76)
       rhachet-roles-bhrain: 0.3.0(@types/node@22.15.21)(zod@3.25.76)
       test-fns: 1.7.2
     transitivePeerDependencies:
@@ -8232,17 +8292,17 @@ snapshots:
     dependencies:
       '@ehmpathy/as-command': 1.0.3
       '@ehmpathy/uni-time': 1.8.1
-      as-procedure: 1.1.7
+      as-procedure: 1.1.7(@types/node@22.15.21)(zod@3.25.76)
       domain-objects: 0.31.3
       fast-glob: 3.3.3
       helpful-errors: 1.5.3
       inquirer: 12.7.0(@types/node@22.15.21)
       openai: 5.8.2(zod@3.25.76)
-      rhachet: 1.13.1(zod@3.25.76)
-      rhachet-artifact: 1.0.0
-      rhachet-artifact-git: 1.1.0
+      rhachet: 1.13.1(@types/node@22.15.21)(zod@3.25.76)
+      rhachet-artifact: 1.0.0(@types/node@22.15.21)(zod@3.25.76)
+      rhachet-artifact-git: 1.1.0(@types/node@22.15.21)(zod@3.25.76)
       serde-fns: 1.2.0
-      simple-in-memory-cache: 0.4.0
+      simple-in-memory-cache: 0.4.0(@types/node@22.15.21)(zod@3.25.76)
       type-fns: 1.21.0
       with-simple-caching: 0.14.2
       wrapper-fns: 1.1.0
@@ -8256,17 +8316,17 @@ snapshots:
     dependencies:
       '@ehmpathy/as-command': 1.0.3
       '@ehmpathy/uni-time': 1.8.1
-      as-procedure: 1.1.7
+      as-procedure: 1.1.7(@types/node@22.15.21)(zod@3.25.76)
       domain-objects: 0.31.7(@types/node@22.15.21)(zod@3.25.76)
       fast-glob: 3.3.3
       helpful-errors: 1.5.3
       inquirer: 12.7.0(@types/node@22.15.21)
       openai: 5.8.2(zod@3.25.76)
       rhachet: 1.16.0(zod@3.25.76)
-      rhachet-artifact: 1.0.0
-      rhachet-artifact-git: 1.1.0
+      rhachet-artifact: 1.0.0(@types/node@22.15.21)(zod@3.25.76)
+      rhachet-artifact-git: 1.1.0(@types/node@22.15.21)(zod@3.25.76)
       serde-fns: 1.2.0
-      simple-in-memory-cache: 0.4.0
+      simple-in-memory-cache: 0.4.0(@types/node@22.15.21)(zod@3.25.76)
       type-fns: 1.21.0
       with-simple-caching: 0.14.2
       wrapper-fns: 1.1.0
@@ -8276,10 +8336,10 @@ snapshots:
       - ws
       - zod
 
-  rhachet@1.13.1(zod@3.25.76):
+  rhachet@1.13.1(@types/node@22.15.21)(zod@3.25.76):
     dependencies:
       '@ehmpathy/uni-time': 1.9.0
-      as-procedure: 1.1.6
+      as-procedure: 1.1.6(@types/node@22.15.21)(zod@3.25.76)
       bottleneck: 2.19.5
       chalk: 4.1.2
       commander: 14.0.0
@@ -8288,20 +8348,22 @@ snapshots:
       flattie: 1.1.1
       helpful-errors: 1.5.3
       openai: 5.8.2(zod@3.25.76)
-      rhachet-artifact: 1.0.1
-      rhachet-artifact-git: 1.1.3
+      rhachet-artifact: 1.0.1(@types/node@22.15.21)(zod@3.25.76)
+      rhachet-artifact-git: 1.1.3(@types/node@22.15.21)(zod@3.25.76)
       serde-fns: 1.3.1
       tsx: 4.20.5
       type-fns: 1.21.0
       uuid-fns: 1.0.1
     transitivePeerDependencies:
+      - '@types/node'
+      - aws-crt
       - ws
       - zod
 
-  rhachet@1.15.2(zod@3.25.76):
+  rhachet@1.15.2(@types/node@22.15.21)(zod@3.25.76):
     dependencies:
       '@ehmpathy/uni-time': 1.9.0
-      as-procedure: 1.1.6
+      as-procedure: 1.1.6(@types/node@22.15.21)(zod@3.25.76)
       bottleneck: 2.19.5
       chalk: 4.1.2
       commander: 14.0.0
@@ -8310,19 +8372,21 @@ snapshots:
       flattie: 1.1.1
       helpful-errors: 1.5.3
       openai: 5.8.2(zod@3.25.76)
-      rhachet-artifact: 1.0.1
-      rhachet-artifact-git: 1.1.3
+      rhachet-artifact: 1.0.1(@types/node@22.15.21)(zod@3.25.76)
+      rhachet-artifact-git: 1.1.3(@types/node@22.15.21)(zod@3.25.76)
       serde-fns: 1.3.1
       type-fns: 1.21.0
       uuid-fns: 1.0.1
     transitivePeerDependencies:
+      - '@types/node'
+      - aws-crt
       - ws
       - zod
 
   rhachet@1.16.0(zod@3.25.76):
     dependencies:
       '@ehmpathy/uni-time': 1.9.0
-      as-procedure: 1.1.6
+      as-procedure: 1.1.6(@types/node@22.15.21)(zod@3.25.76)
       bottleneck: 2.19.5
       chalk: 4.1.2
       commander: 14.0.0
@@ -8331,8 +8395,8 @@ snapshots:
       flattie: 1.1.1
       helpful-errors: 1.5.3
       openai: 5.8.2(zod@3.25.76)
-      rhachet-artifact: 1.0.1
-      rhachet-artifact-git: 1.1.3
+      rhachet-artifact: 1.0.1(@types/node@22.15.21)(zod@3.25.76)
+      rhachet-artifact-git: 1.1.3(@types/node@22.15.21)(zod@3.25.76)
       serde-fns: 1.3.1
       type-fns: 1.21.0
       uuid-fns: 1.0.1
@@ -8346,7 +8410,7 @@ snapshots:
       '@anthropic-ai/sdk': 0.71.2(zod@3.25.76)
       '@ehmpathy/uni-time': 1.9.0
       '@openai/codex-sdk': 0.77.0
-      as-procedure: 1.1.6
+      as-procedure: 1.1.6(@types/node@22.15.21)(zod@3.25.76)
       bottleneck: 2.19.5
       chalk: 4.1.2
       commander: 14.0.0
@@ -8355,8 +8419,8 @@ snapshots:
       flattie: 1.1.1
       helpful-errors: 1.5.3
       openai: 5.8.2(zod@3.25.76)
-      rhachet-artifact: 1.0.1
-      rhachet-artifact-git: 1.1.3
+      rhachet-artifact: 1.0.1(@types/node@22.15.21)(zod@3.25.76)
+      rhachet-artifact-git: 1.1.3(@types/node@22.15.21)(zod@3.25.76)
       serde-fns: 1.3.1
       type-fns: 1.21.0
       uuid-fns: 1.0.1
@@ -8440,52 +8504,77 @@ snapshots:
 
   signal-exit@4.1.0: {}
 
-  simple-in-memory-cache@0.4.0:
+  simple-in-memory-cache@0.4.0(@types/node@22.15.21)(zod@3.25.76):
     dependencies:
-      '@ehmpathy/uni-time': 1.7.4
+      '@ehmpathy/uni-time': 1.9.4(@types/node@22.15.21)(zod@3.25.76)
+    transitivePeerDependencies:
+      - '@types/node'
+      - aws-crt
+      - ws
+      - zod
 
   simple-leveled-log-methods@0.1.4: {}
 
-  simple-log-methods@0.6.1:
+  simple-log-methods@0.6.1(@types/node@22.15.21)(zod@3.25.76):
     dependencies:
       '@ehmpathy/error-fns': 1.3.7
-      '@ehmpathy/uni-time': 1.7.4
+      '@ehmpathy/uni-time': 1.9.4(@types/node@22.15.21)(zod@3.25.76)
       domain-glossary-procedure: 1.0.0
       type-fns: 1.21.0
+    transitivePeerDependencies:
+      - '@types/node'
+      - aws-crt
+      - ws
+      - zod
 
-  simple-log-methods@0.6.2:
+  simple-log-methods@0.6.2(@types/node@22.15.21)(zod@3.25.76):
     dependencies:
       '@ehmpathy/error-fns': 1.3.7
-      '@ehmpathy/uni-time': 1.7.4
+      '@ehmpathy/uni-time': 1.9.4(@types/node@22.15.21)(zod@3.25.76)
       domain-glossary-procedure: 1.0.0
       type-fns: 1.21.0
+    transitivePeerDependencies:
+      - '@types/node'
+      - aws-crt
+      - ws
+      - zod
 
-  simple-log-methods@0.6.3:
+  simple-log-methods@0.6.3(@types/node@22.15.21)(zod@3.25.76):
     dependencies:
       '@ehmpathy/error-fns': 1.3.7
-      '@ehmpathy/uni-time': 1.7.4
+      '@ehmpathy/uni-time': 1.9.4(@types/node@22.15.21)(zod@3.25.76)
       domain-glossary-procedure: 1.0.0
       type-fns: 1.21.0
+    transitivePeerDependencies:
+      - '@types/node'
+      - aws-crt
+      - ws
+      - zod
 
-  simple-log-methods@0.6.5:
+  simple-log-methods@0.6.5(@types/node@22.15.21)(zod@3.25.76):
     dependencies:
       '@ehmpathy/error-fns': 1.3.7
-      '@ehmpathy/uni-time': 1.7.4
+      '@ehmpathy/uni-time': 1.9.4(@types/node@22.15.21)(zod@3.25.76)
       domain-glossary-procedure: 1.0.0
       domain-objects: 0.31.3
       helpful-errors: 1.5.3
       type-fns: 1.21.0
+    transitivePeerDependencies:
+      - '@types/node'
+      - aws-crt
+      - ws
+      - zod
 
   simple-on-disk-cache@1.7.3:
     dependencies:
       '@aws-sdk/client-s3': 3.962.0
-      '@ehmpathy/uni-time': 1.7.4
+      '@ehmpathy/uni-time': 1.9.4(@types/node@22.15.21)(zod@3.25.76)
       bottleneck: 2.19.5
       domain-objects: 0.31.0
       hash-fns: 1.1.0
       helpful-errors: 1.5.3
       serde-fns: 1.3.1
-      simple-in-memory-cache: 0.4.0
+      simple-in-memory-cache: 0.4.0(@types/node@22.15.21)(zod@3.25.76)
       type-fns: 1.21.0
     transitivePeerDependencies:
       - aws-crt
@@ -8800,22 +8889,25 @@ snapshots:
     dependencies:
       isexe: 2.0.0
 
-  with-simple-cache@0.15.1:
+  with-simple-cache@0.15.1(@types/node@22.15.21)(zod@3.25.76):
     dependencies:
-      '@ehmpathy/uni-time': 1.7.4
+      '@ehmpathy/uni-time': 1.9.4(@types/node@22.15.21)(zod@3.25.76)
       procedure-fns: 1.0.1
       serde-fns: 1.3.1
-      simple-in-memory-cache: 0.4.0
+      simple-in-memory-cache: 0.4.0(@types/node@22.15.21)(zod@3.25.76)
       simple-on-disk-cache: 1.7.3
       type-fns: 1.21.0
     transitivePeerDependencies:
+      - '@types/node'
       - aws-crt
+      - ws
+      - zod
 
   with-simple-caching@0.14.2:
     dependencies:
-      '@ehmpathy/uni-time': 1.7.4
+      '@ehmpathy/uni-time': 1.9.4(@types/node@22.15.21)(zod@3.25.76)
       serde-fns: 1.3.1
-      simple-in-memory-cache: 0.4.0
+      simple-in-memory-cache: 0.4.0(@types/node@22.15.21)(zod@3.25.76)
       simple-on-disk-cache: 1.7.3
       type-fns: 1.21.0
       visualogic: 1.3.2
