@@ -3,10 +3,9 @@
 ![test](https://github.com/ehmpathy/wrapper-fns/workflows/test/badge.svg)
 ![publish](https://github.com/ehmpathy/wrapper-fns/workflows/publish/badge.svg)
 
-Use wrappers for simpler, safer, and more readable code.
+use wrappers for simpler, safer, and more readable code.
 
-Wrap your procedures with before and after effects to abstract away common lifecycle tasks. This library makes it simple to use wrappers and includes a standard set of primitive wrappers.
-
+wrap your procedures with before and after effects to abstract away common lifecycle tasks. this library makes it simple to compose wrappers and includes a standard set of primitives.
 
 # install
 
@@ -16,63 +15,139 @@ npm install wrapper-fns
 
 # use
 
-### `withWrappers`
+## `withRetry`
 
-applies wrappers chosen in a list, to avoid nested indentations
+retries the wrapped procedure once on error, providing resilience against transient failures.
 
 ```ts
+import { withRetry } from 'wrapper-fns';
+
+const doSomethingFlakey = async () => { /* ... */ };
+
+// wrap and invoke
+const result = await withRetry(doSomethingFlakey)();
+```
+
+logs retry attempts when `context.log` is available:
+
+```ts
+const doSomethingFlakey = async (
+  input: { id: string },
+  context: { log: LogMethods },
+) => { /* ... */ };
+
+// retry will log a warning before the second attempt
+const result = await withRetry(doSomethingFlakey)({ id: '123' }, { log: console });
+```
+
+## `withTimeout`
+
+throws a timeout error if the wrapped procedure exceeds the threshold duration.
+
+```ts
+import { withTimeout } from 'wrapper-fns';
+
+const doSomethingSlow = async () => { /* ... */ };
+
+// throws if execution takes longer than 3 seconds
+const result = await withTimeout(doSomethingSlow, { threshold: { seconds: 3 } })();
+```
+
+supports multiple duration formats via [uni-time](https://github.com/ehmpathy/uni-time):
+
+```ts
+// milliseconds
+await withTimeout(logic, { threshold: { milliseconds: 500 } })();
+
+// minutes
+await withTimeout(logic, { threshold: { minutes: 2 } })();
+```
+
+## `withBottleneck`
+
+executes the wrapped procedure within a [bottleneck](https://github.com/SGrondin/bottleneck) for rate limiting and concurrency control.
+
+```ts
+import Bottleneck from 'bottleneck';
+import { withBottleneck } from 'wrapper-fns';
+
+const callExternalApi = async () => { /* ... */ };
+
+// use the global bottleneck (maxConcurrent: 1)
+const result = await withBottleneck(callExternalApi)();
+
+// use a custom bottleneck
+const limiter = new Bottleneck({ maxConcurrent: 3, minTime: 100 });
+const result = await withBottleneck(callExternalApi, { bottleneck: limiter })();
+```
+
+## `withWrappers`
+
+composes multiple wrappers without nested indentation.
+
+```ts
+import { withWrappers, setWrapper, withRetry, withTimeout } from 'wrapper-fns';
+
+const doGreatThing = async (input: { id: string }) => { /* ... */ };
+
 const wrapped = withWrappers(doGreatThing, [
   setWrapper({
-    wrapper: withLogTrail,
-    options: { name: 'doGreatThing' },
+    wrapper: withTimeout,
+    options: { threshold: { seconds: 5 } },
   }),
   setWrapper({
-    wrapper: withTimeout,
-    options: { threshold: 100 },
+    wrapper: withRetry,
+    options: undefined, // withRetry has no options
   }),
 ]);
+
+// equivalent to: withRetry(withTimeout(doGreatThing, { threshold: { seconds: 5 } }))
+const result = await wrapped({ id: '123' });
 ```
 
-*note, we use `setWrapper` to allow typescript to enforce the relationship between `options` and the `wrapper`*
+use `setWrapper` to get type-safe enforcement of the relationship between `wrapper` and `options`.
 
+# types
 
-### `withRetry`
+## `Wrapper`
 
-retries the wrapped logic execution in case of failure
+the type signature for a wrapper function:
 
-for example
 ```ts
-const result = await withRetry(doSomethingFlakey)()
+type Wrapper<TProcedure extends Procedure, TOptions> = (
+  logic: TProcedure,
+  options: TOptions,
+) => TProcedure;
 ```
 
+## `WrapperChoice`
 
-### `withBottleneck`
+the type for configuring a wrapper with its options:
 
-executes the wrapped logic execution within a bottleneck
-
-for example
 ```ts
-// use the global bottleneck by default
-const result = await withBottleneck(doSomethingRatelimited)()
-```
-or
-```ts
-// use a dedicated bottleneck instead
-const options = { bottleneck: new Bottleneck({ maxConcurrent: 3 }) }
-const result = await withBottleneck(doSomethingRatelimited, options)()
+type WrapperChoice<TProcedure extends Procedure, TOptions> = {
+  wrapper: Wrapper<TProcedure, TOptions>;
+  options: TOptions;
+};
 ```
 
-### `withTimeout`
+# custom wrappers
 
-throws a timeout error if the wrapped logic takes longer than the threshold
+create your own wrappers following the same pattern:
 
-- if your async fn takes longer than timeout ms, then an error will be thrown
-- if your async fn executes faster than timeout ms, you'll get the normal response of the fn
-
-
-for example
-or
 ```ts
-const options = { threshold: { seconds: 3 } }
-const result = await withTimeout(doSomethingAsync, options)(...args);
+import type { Wrapper } from 'wrapper-fns';
+import type { Procedure } from 'as-procedure';
+
+const withLogging: Wrapper<Procedure, { name: string }> = (logic, options) => {
+  return async (input, context) => {
+    console.log(`${options.name}: started`);
+    const result = await logic(input, context);
+    console.log(`${options.name}: completed`);
+    return result;
+  };
+};
+
+// use it
+const wrapped = withLogging(myProcedure, { name: 'myProcedure' });
 ```
