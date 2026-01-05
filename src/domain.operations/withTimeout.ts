@@ -1,18 +1,18 @@
-import { toMilliseconds, type UniDuration } from '@ehmpathy/uni-time';
 import type {
   Procedure,
   ProcedureContext,
   ProcedureInput,
   ProcedureOutput,
 } from 'as-procedure';
+import { type IsoDuration, toMilliseconds } from 'iso-time';
 
 export function withTimeout<TInput, TContext, TOutput>(
   logic: () => TOutput, // empty inputs override
-  options: { threshold: UniDuration },
+  options: { threshold: IsoDuration },
 ): typeof logic;
 export function withTimeout<TInput, TContext, TOutput>(
   logic: Procedure<TInput, TContext, TOutput>,
-  options: { threshold: UniDuration },
+  options: { threshold: IsoDuration },
 ): typeof logic;
 
 /**
@@ -38,7 +38,7 @@ export function withTimeout<TInput, TContext, TOutput>(
  */
 export function withTimeout<TInput, TContext, TOutput>(
   logic: Procedure<TInput, TContext, TOutput>,
-  options: { threshold: UniDuration },
+  options: { threshold: IsoDuration },
 ): typeof logic {
   const thresholdMs = toMilliseconds(options.threshold);
   return (

@@ -52,13 +52,13 @@
     "prepare": "if [ -e .git ] && [ -z $CI ]; then npm run prepare:husky && npm run prepare:rhachet; fi"
   },
   "dependencies": {
-    "@ehmpathy/uni-time": "1.9.4",
-    "as-procedure": "1.1.10",
+    "as-procedure": "1.1.11",
     "bottleneck": "2.19.5",
     "domain-glossary-procedure": "1.0.0",
-    "domain-objects": "0.31.7",
+    "domain-objects": "0.31.9",
     "helpful-errors": "1.5.3",
-    "simple-log-methods": "0.6.5"
+    "iso-time": "1.10.1",
+    "simple-log-methods": "0.6.9"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.8",
