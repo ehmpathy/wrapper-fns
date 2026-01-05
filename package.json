@@ -52,7 +52,7 @@
     "prepare": "if [ -e .git ] && [ -z $CI ]; then npm run prepare:husky && npm run prepare:rhachet; fi"
   },
   "dependencies": {
-    "@ehmpathy/uni-time": "1.7.4",
+    "@ehmpathy/uni-time": "1.9.4",
     "as-procedure": "1.1.10",
     "bottleneck": "2.19.5",
     "domain-glossary-procedure": "1.0.0",
