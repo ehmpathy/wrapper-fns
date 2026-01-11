@@ -2,7 +2,7 @@
   "name": "wrapper-fns",
   "author": "ehmpathy",
   "description": "Use wrappers for simpler, safer, and more readable code",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "repository": "ehmpathy/wrapper-fns",
   "homepage": "https://github.com/ehmpathy/wrapper-fns",
   "keywords": [
