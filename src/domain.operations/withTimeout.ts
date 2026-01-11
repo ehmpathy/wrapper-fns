@@ -45,22 +45,27 @@ export function withTimeout<TInput, TContext, TOutput>(
     input: ProcedureInput<typeof logic>,
     context: ProcedureContext<typeof logic>,
   ): ProcedureOutput<typeof logic> => {
+    // track the timeout handle so we can clear it when the race completes
+    let timeoutId: ReturnType<typeof setTimeout>;
+
     // create a promise that rejects in <ms> milliseconds; https://italonascimento.github.io/applying-a-timeout-to-your-promises/
-    const timeout = new Promise((resolve, reject) => {
-      const id = setTimeout(() => {
-        clearTimeout(id);
+    const timeout = new Promise((_, reject) => {
+      timeoutId = setTimeout(() => {
         reject(
           new Error(
             `promise was timed out in ${thresholdMs} ms, by withTimeout`,
           ),
         );
-      }, thresholdMs); // tslint:disable-line align
+      }, thresholdMs);
     });
 
     // returns a "race" between our timeout and the function executed with the input params
     return Promise.race([
       logic(input, context), // the wrapped fn, executed w/ the input params
       timeout, // the timeout
-    ]) as ProcedureOutput<typeof logic>;
+    ]).finally(() => {
+      // clear the timeout to prevent open handles (e.g., Jest warnings)
+      clearTimeout(timeoutId);
+    }) as ProcedureOutput<typeof logic>;
   };
 }
